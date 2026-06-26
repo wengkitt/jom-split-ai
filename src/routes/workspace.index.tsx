@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router'
 import * as React from 'react'
 import {
   Mic,
@@ -29,25 +30,29 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { FeedPanel } from './FeedPanel'
-import { SettlementsPanel } from './SettlementsPanel'
-import { ManualEntryPanel } from './ManualEntryPanel'
+import { FeedPanel } from '../components/workspace/FeedPanel'
+import { SettlementsPanel } from '../components/workspace/SettlementsPanel'
+import { ManualEntryPanel } from '../components/workspace/ManualEntryPanel'
 import type {
   Expense,
   Member,
   ParsedExpense,
   ExpenseCategory,
   Transfer,
-} from './types'
+} from '../lib/types'
 import {
   defaultExpenses,
   defaultMembers,
   getCategoryFromDescription,
   parseAISpeechInput,
   calculateBalancesAndTransfers,
-} from './utils'
+} from '../lib/utils'
 
-export function HomePage() {
+export const Route = createFileRoute('/workspace/')({
+  component: WorkSpacePage,
+})
+
+function WorkSpacePage() {
   const [darkMode, setDarkMode] = React.useState<boolean>(false)
   const [activeGroup, setActiveGroup] =
     React.useState<string>('Penang Food Trip')

@@ -1,5 +1,5 @@
 import { TrendingDown, TrendingUp } from 'lucide-react'
-import type { Expense, ExpenseCategory } from './types'
+import type { Expense, ExpenseCategory } from '../../lib/types'
 
 interface FeedPanelProps {
   expenses: Array<Expense>

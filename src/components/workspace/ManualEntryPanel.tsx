@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import type { Member, ExpenseCategory } from './types'
+import type { Member, ExpenseCategory } from '../../lib/types'
 
 interface ManualEntryPanelProps {
   manualDesc: string

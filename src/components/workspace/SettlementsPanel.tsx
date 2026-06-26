@@ -1,5 +1,5 @@
 import { ArrowRight, QrCode, Send, Smile } from 'lucide-react'
-import type { Transfer } from './types'
+import type { Transfer } from '../../lib/types'
 
 interface SettlementsPanelProps {
   transfers: Array<Transfer>
