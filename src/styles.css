@@ -91,36 +91,147 @@ body {
   --sidebar-accent-foreground: #111827;
   --sidebar-border: #111827;
   --sidebar-ring: #0e7490;
+
+  /* Subtle gradients for light mode */
+  --bg-gradient: radial-gradient(ellipse at top, #faf6ee, #f0ece3);
 }
 
 .dark {
-  --background: #121214;
-  --foreground: #f9fafb;
-  --card: #1e1e22;
-  --card-foreground: #f9fafb;
-  --popover: #1e1e22;
-  --popover-foreground: #f9fafb;
-  --primary: #22d3ee;
-  --primary-foreground: #121214;
-  --secondary: #fde047;
-  --secondary-foreground: #121214;
-  --muted: #1e1e22;
-  --muted-foreground: #9ca3af;
-  --accent: #fde047;
-  --accent-foreground: #121214;
-  --destructive: #ff6b4a;
-  --destructive-foreground: #121214;
-  --border: #f9fafb;
-  --input: #f9fafb;
-  --ring: #22d3ee;
-  --sidebar: #1e1e22;
-  --sidebar-foreground: #f9fafb;
-  --sidebar-primary: #22d3ee;
-  --sidebar-primary-foreground: #121214;
-  --sidebar-accent: #1e1e22;
-  --sidebar-accent-foreground: #f9fafb;
-  --sidebar-border: #f9fafb;
-  --sidebar-ring: #22d3ee;
+  /* Rich dark colors with depth */
+  --background: #0a0a0f;
+  --foreground: #e8eaf0;
+  --card: #14141d;
+  --card-foreground: #e8eaf0;
+  --popover: #14141d;
+  --popover-foreground: #e8eaf0;
+
+  /* Vibrant primary that works well in dark */
+  --primary: #5eead4;
+  --primary-foreground: #0a0a0f;
+
+  /* Warmer secondary for contrast */
+  --secondary: #fcd34d;
+  --secondary-foreground: #0a0a0f;
+
+  --muted: #1c1c2a;
+  --muted-foreground: #94a3b8;
+
+  /* Accent with subtle gradient feel */
+  --accent: #a78bfa;
+  --accent-foreground: #0a0a0f;
+
+  /* More refined destructive color */
+  --destructive: #f87171;
+  --destructive-foreground: #0a0a0f;
+
+  /* Softer borders for dark mode */
+  --border: #2a2a3a;
+  --input: #2a2a3a;
+  --ring: #5eead4;
+
+  --radius: 12px;
+
+  /* Sidebar with subtle difference from card */
+  --sidebar: #0f0f18;
+  --sidebar-foreground: #e8eaf0;
+  --sidebar-primary: #5eead4;
+  --sidebar-primary-foreground: #0a0a0f;
+  --sidebar-accent: #1c1c2a;
+  --sidebar-accent-foreground: #e8eaf0;
+  --sidebar-border: #2a2a3a;
+  --sidebar-ring: #5eead4;
+
+  /* Dark mode gradients */
+  --bg-gradient: radial-gradient(ellipse at top, #14141d, #0a0a0f);
+  --glow-primary: 0 0 30px rgba(94, 234, 212, 0.1);
+  --glow-accent: 0 0 30px rgba(167, 139, 250, 0.08);
+}
+
+/* Enhanced dark mode specific styles */
+.dark body {
+  background: var(--background);
+  background-image: var(--bg-gradient);
+  min-height: 100vh;
+}
+
+.dark .neo-card {
+  border-color: var(--border);
+  box-shadow:
+    4px 4px 0px 0px var(--border),
+    var(--glow-primary);
+  background: var(--card);
+  transition: all 0.2s ease;
+}
+
+.dark .neo-card:hover {
+  box-shadow:
+    6px 6px 0px 0px var(--border),
+    var(--glow-accent);
+  transform: translateY(-2px);
+}
+
+.dark .neo-btn {
+  border-color: var(--border);
+  box-shadow:
+    3px 3px 0px 0px var(--border),
+    var(--glow-primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  transition: all 0.15s ease;
+}
+
+.dark .neo-btn:hover:not(:disabled) {
+  box-shadow:
+    5px 5px 0px 0px var(--border),
+    var(--glow-accent);
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--primary) 80%, white);
+}
+
+.dark .neo-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px var(--border);
+}
+
+/* Selection color for dark mode */
+.dark ::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--border), var(--primary) 30%);
+}
+
+/* Input styles for dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 /* Custom Neo-Brutalist styles */
@@ -135,9 +246,8 @@ body {
 .neo-card {
   border: 4px solid var(--border);
   box-shadow: 4px 4px 0px 0px var(--border);
-  transition:
-    transform 0.05s ease,
-    box-shadow 0.05s ease;
+  transition: all 0.15s ease;
+  background: var(--card);
 }
 
 .neo-card:active {
@@ -148,9 +258,9 @@ body {
 .neo-btn {
   border: 3px solid var(--border);
   box-shadow: 3px 3px 0px 0px var(--border);
-  transition:
-    transform 0.05s ease,
-    box-shadow 0.05s ease;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .neo-btn:active:not(:disabled) {
