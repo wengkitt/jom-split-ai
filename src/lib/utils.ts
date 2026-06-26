@@ -14,7 +14,6 @@ export const defaultMembers: Array<Member> = [
   { name: 'Chloe', avatar: 'C' },
   { name: 'Dev', avatar: 'D' },
 ]
-
 export const defaultExpenses: Array<Expense> = [
   {
     id: '1',
@@ -60,6 +59,51 @@ export const defaultExpenses: Array<Expense> = [
     date: 'Yesterday, 14:00',
     category: 'transport',
     splits: { Sarah: 23.75, Ben: 23.75, Chloe: 23.75, Dev: 23.75 },
+  },
+  {
+    id: '6',
+    description: 'Movie Night - Avatar 3',
+    amount: 72.0,
+    payer: 'Ben',
+    date: '2 days ago, 20:30',
+    category: 'entertainment',
+    splits: { Sarah: 18.0, Ben: 18.0, Chloe: 18.0, Dev: 18.0 },
+  },
+  {
+    id: '7',
+    description: 'Groceries - Jaya Grocer',
+    amount: 256.4,
+    payer: 'Sarah',
+    date: '2 days ago, 11:20',
+    category: 'shopping',
+    splits: { Sarah: 85.47, Ben: 85.47, Chloe: 85.46 },
+  },
+  {
+    id: '8',
+    description: 'Petrol - Shell Station',
+    amount: 120.0,
+    payer: 'Dev',
+    date: '3 days ago, 08:00',
+    category: 'transport',
+    splits: { Sarah: 30.0, Ben: 30.0, Chloe: 30.0, Dev: 30.0 },
+  },
+  {
+    id: '9',
+    description: 'Teh Tarik & Roti Canai',
+    amount: 45.5,
+    payer: 'Chloe',
+    date: '3 days ago, 15:45',
+    category: 'food',
+    splits: { Sarah: 15.17, Ben: 15.17, Chloe: 15.16 },
+  },
+  {
+    id: '10',
+    description: 'Netflix Subscription',
+    amount: 55.0,
+    payer: 'Sarah',
+    date: '4 days ago, 10:00',
+    category: 'utilities',
+    splits: { Sarah: 13.75, Ben: 13.75, Chloe: 13.75, Dev: 13.75 },
   },
 ]
 

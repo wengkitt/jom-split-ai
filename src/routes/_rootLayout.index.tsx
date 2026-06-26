@@ -142,7 +142,7 @@ function WorkspacesPage() {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-black text-lg">{ws.name}</h3>
+                  <h3 className="font-black text-lg"># {ws.name}</h3>
                   <div className="text-sm text-muted-foreground">
                     {ws.description}
                   </div>
@@ -156,7 +156,7 @@ function WorkspacesPage() {
       </div>
 
       <Dialog open={openCreate} onOpenChange={() => setOpenCreate(false)}>
-        <DialogContent className="neo-card max-w-md mx-auto p-6">
+        <DialogContent className="neo-card neo-card-no-active max-w-md mx-auto p-6">
           <DialogHeader>
             <DialogTitle className="font-heading text-xl font-black">
               Create Workspace

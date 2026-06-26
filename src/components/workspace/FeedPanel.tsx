@@ -1,4 +1,5 @@
-import { TrendingDown, TrendingUp } from 'lucide-react'
+import { Plus, TrendingDown, TrendingUp } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import type { Expense, ExpenseCategory } from '../../lib/types'
 
 interface FeedPanelProps {
@@ -6,6 +7,7 @@ interface FeedPanelProps {
   currentUser: string
   userBalance: number
   getCategoryIcon: (category: ExpenseCategory) => React.ReactNode
+  onOpenAddBill?: () => void
 }
 
 export function FeedPanel({
@@ -13,6 +15,7 @@ export function FeedPanel({
   currentUser,
   userBalance,
   getCategoryIcon,
+  onOpenAddBill,
 }: FeedPanelProps) {
   return (
     <>
@@ -46,13 +49,24 @@ export function FeedPanel({
         </div>
       </div>
 
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="font-heading font-black text-base uppercase tracking-wider">
-          Recent Expenses
-        </h3>
-        <span className="text-xs font-bold text-muted-foreground">
-          Showing {expenses.length} logs
-        </span>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-3">
+        <div>
+          <h3 className="font-heading font-black text-base uppercase tracking-wider">
+            Recent Expenses
+          </h3>
+          <span className="text-xs font-bold text-muted-foreground">
+            Showing {expenses.length} logs
+          </span>
+        </div>
+        <Button
+          onClick={onOpenAddBill}
+          variant="secondary"
+          size="sm"
+          className="neo-btn rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider"
+        >
+          <Plus className="size-4 mr-2" />
+          Add Bill
+        </Button>
       </div>
 
       <div className="flex flex-col gap-3 flex-1 overflow-y-auto pr-1">

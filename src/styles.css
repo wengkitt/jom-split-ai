@@ -255,6 +255,11 @@ body {
   box-shadow: 1px 1px 0px 0px var(--border);
 }
 
+.neo-card-no-active:active {
+  transform: none !important;
+  box-shadow: 4px 4px 0px 0px var(--border) !important;
+}
+
 .neo-btn {
   border: 3px solid var(--border);
   box-shadow: 3px 3px 0px 0px var(--border);

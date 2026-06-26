@@ -20,6 +20,8 @@ const categoryLabels: Record<ExpenseCategory, string> = {
   food: '🍔 Food',
   transport: '🚗 Ride',
   entertainment: '🎉 Fun',
+  shopping: '🛍️ Shopping',
+  utilities: '💡 Utilities',
   other: '☕ Other',
 }
 
@@ -36,11 +38,7 @@ export function ManualEntryPanel({
   saveManualExpense,
 }: ManualEntryPanelProps) {
   return (
-    <div className="neo-card bg-card p-4 space-y-4">
-      <h3 className="font-heading font-black text-base uppercase tracking-wider mb-2 text-left">
-        Log Bill Manually
-      </h3>
-
+    <div className="p-4 space-y-4">
       <div className="space-y-1.5 text-left">
         <Label
           htmlFor="desc"

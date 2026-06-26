@@ -1,7 +1,14 @@
-// oxlint-disable no-unused-vars
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
-import { Utensils, Car, Coffee, Check, Sparkles } from 'lucide-react'
+import {
+  Utensils,
+  Car,
+  Coffee,
+  Check,
+  Sparkles,
+  ChevronLeft,
+  Users,
+} from 'lucide-react'
 import { useState, useMemo } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -29,7 +36,7 @@ export const Route = createFileRoute('/_rootLayout/workspace')({
 })
 
 function WorkSpacePage() {
-  const [activeGroup, setActiveGroup] = useState<string>('Penang Food Trip')
+  const [activeGroup] = useState<string>('Penang Food Trip')
 
   const [members] = useState<Array<Member>>(defaultMembers)
   const [expenses, setExpenses] = useState<Array<Expense>>(defaultExpenses)
@@ -47,6 +54,7 @@ function WorkSpacePage() {
   const [settlementSuccess, setSettlementSuccess] = useState<Transfer | null>(
     null,
   )
+  const [openAddBill, setOpenAddBill] = useState(false)
 
   //   const voiceSuggestions = [
   //     'Jom split RM120 for Nasi Kandar equally except Sarah who owes RM15',
@@ -121,6 +129,7 @@ function WorkSpacePage() {
     setExpenses([newExpense, ...expenses])
     setManualDesc('')
     setManualAmount('')
+    setOpenAddBill(false)
     setShowSuccessToast(`Added manually: "${newExpense.description}"! ⚡`)
     setTimeout(() => setShowSuccessToast(null), 3000)
   }
@@ -171,7 +180,7 @@ function WorkSpacePage() {
         open={!!settlementSuccess}
         onOpenChange={() => setSettlementSuccess(null)}
       >
-        <DialogContent className="neo-card bg-card border-4 border-border max-w-[350px] mx-auto text-center p-6">
+        <DialogContent className="neo-card bg-card border-4 border-border max-w-87.5 mx-auto text-center p-6">
           <DialogHeader>
             <div className="mx-auto size-16 rounded-full bg-emerald-100 dark:bg-emerald-900 border-4 border-border flex items-center justify-center mb-2 animate-bounce">
               <Check className="size-8 text-emerald-600 dark:text-emerald-300" />
@@ -207,75 +216,59 @@ function WorkSpacePage() {
       </Dialog>
 
       <div>
-        <div className="px-5 py-3 border-b-4 border-border bg-card flex items-center justify-between">
-          <div>
-            <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
-              Active Workspace
-            </span>
-            <div className="flex items-center gap-1.5 cursor-pointer">
+        <div className="px-5 py-4 border-b-4 border-border bg-card">
+          <div className="flex flex-row items-center gap-4">
+            <Link
+              to="/"
+              className="neo-btn bg-background text-foreground border-2 border-border px-3 py-2 rounded-xl inline-flex items-center gap-2 font-bold hover:bg-muted"
+            >
+              <ChevronLeft className="size-4" />
+            </Link>
+            <div className="flex flex-row items-center gap-2">
               <h2 className="font-heading font-black text-lg text-foreground">
-                {activeGroup}
+                # {activeGroup}
               </h2>
-              <div className="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider">
-                👥 {members.length}
+              <div className="bg-primary/10 flex flex-row gap-1 text-primary px-2 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Users size={16} /> {members.length}
               </div>
             </div>
           </div>
-          <Button
-            variant="outline"
-            size="xs"
-            className="neo-btn bg-background text-foreground font-bold hover:bg-muted"
-            onClick={() =>
-              setActiveGroup(
-                activeGroup === 'Penang Food Trip'
-                  ? 'Roommates Shared'
-                  : 'Penang Food Trip',
-              )
-            }
-          >
-            Switch
-          </Button>
         </div>
 
         <Tabs defaultValue="feed" className="flex-1 flex flex-col">
           <div className="px-4 py-2 bg-muted/30 border-b-2 border-border">
-            <TabsList className="grid grid-cols-3 bg-background border-2 border-border p-1 rounded-xl">
+            <TabsList>
               <TabsTrigger
                 value="feed"
-                className="rounded-lg py-1.5 font-bold text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-2 data-[state=active]:border-border"
+                className="rounded-md p-3 font-bold text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-2 data-[state=active]:border-border"
               >
                 Feed
               </TabsTrigger>
               <TabsTrigger
                 value="settlements"
-                className="rounded-lg py-1.5 font-bold text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-2 data-[state=active]:border-border"
+                className="rounded-md  p-3 font-bold text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-2 data-[state=active]:border-border"
               >
                 Settle
-              </TabsTrigger>
-              <TabsTrigger
-                value="add"
-                className="rounded-lg py-1.5 font-bold text-xs data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:border-2 data-[state=active]:border-border"
-              >
-                + Bill
               </TabsTrigger>
             </TabsList>
           </div>
 
           <TabsContent
             value="feed"
-            className="flex-1 flex flex-col p-5 overflow-y-auto max-h-[580px]"
+            className="flex-1 flex flex-col p-5 overflow-y-auto max-h-145"
           >
             <FeedPanel
               expenses={expenses}
               currentUser="Sarah"
               userBalance={sarahBalance}
               getCategoryIcon={getCategoryIcon}
+              onOpenAddBill={() => setOpenAddBill(true)}
             />
           </TabsContent>
 
           <TabsContent
             value="settlements"
-            className="flex-1 p-5 overflow-y-auto max-h-[580px]"
+            className="flex-1 p-5 overflow-y-auto max-h-145"
           >
             <div className="flex items-center gap-2 mb-4 bg-primary/10 border-2 border-border p-3 rounded-2xl">
               <Sparkles className="size-5 text-primary fill-primary animate-pulse shrink-0" />
@@ -292,11 +285,15 @@ function WorkSpacePage() {
               handleSettleTransfer={handleSettleTransfer}
             />
           </TabsContent>
+        </Tabs>
 
-          <TabsContent
-            value="add"
-            className="flex-1 p-5 overflow-y-auto max-h-[580px]"
-          >
+        <Dialog open={openAddBill} onOpenChange={setOpenAddBill}>
+          <DialogContent className="neo-card neo-card-no-active max-w-xl mx-auto p-6">
+            <DialogHeader>
+              <DialogTitle className="font-heading text-2xl font-black text-center">
+                Add Bill
+              </DialogTitle>
+            </DialogHeader>
             <ManualEntryPanel
               manualDesc={manualDesc}
               manualAmount={manualAmount}
@@ -309,8 +306,8 @@ function WorkSpacePage() {
               setManualCategory={setManualCategory}
               saveManualExpense={saveManualExpense}
             />
-          </TabsContent>
-        </Tabs>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   )
