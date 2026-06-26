@@ -24,7 +24,7 @@ import {
   calculateBalancesAndTransfers,
 } from '../lib/utils'
 
-export const Route = createFileRoute('/workspace/')({
+export const Route = createFileRoute('/_rootLayout/workspace')({
   component: WorkSpacePage,
 })
 

@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -135,8 +135,9 @@ function WorkspacesPage() {
             )
           })
           .map((ws) => (
-            <div
+            <Link
               key={ws.id}
+              to={`/workspace`}
               className="neo-card p-4 border-4 border-border bg-card"
             >
               <div className="flex items-start justify-between">
@@ -150,7 +151,7 @@ function WorkspacesPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
       </div>
 
