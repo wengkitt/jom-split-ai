@@ -49,12 +49,6 @@
     "wrangler": "^4.104.0",
     "vite-plus": "catalog:"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss"
-    ]
-  },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
