@@ -66,10 +66,10 @@ function RouteComponent() {
       <div className="w-full max-w-[420px] bg-background sm:rounded-[32px] neo-border-thick overflow-hidden flex flex-col min-h-screen sm:min-h-[850px] shadow-2xl relative">
         <header className="px-5 py-4 bg-primary text-primary-foreground border-b-4 border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-secondary p-1.5 rounded-xl neo-border-thin neo-shadow-sm rotate-[-4deg]">
+            <div className="bg-secondary size-9 rounded-full neo-border-thin neo-shadow-sm rotate-[-4deg] flex items-center justify-center">
               <span className="text-lg font-black text-foreground">J!</span>
             </div>
-            <h1 className="font-heading text-2xl font-black tracking-tight">
+            <h1 className="font-heading text-2xl font-black tracking-tight ml-1">
               JomSplitAI
             </h1>
           </div>
@@ -86,9 +86,9 @@ function RouteComponent() {
                 <Moon className="size-4" />
               )}
             </button>
-            <div className="size-9 rounded-full neo-border-thin bg-secondary flex items-center justify-center font-bold text-foreground">
+            {/* <div className="size-9 rounded-full neo-border-thin bg-secondary flex items-center justify-center font-bold text-foreground">
               S
-            </div>
+            </div> */}
           </div>
         </header>
         <Outlet />
