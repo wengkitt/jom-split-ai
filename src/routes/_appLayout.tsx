@@ -1,5 +1,5 @@
 // oxlint-disable no-unused-vars
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
 import { Moon, Sun } from 'lucide-react'
 import { useState, useEffect } from 'react'
 // import {
@@ -14,11 +14,11 @@ import { useState, useEffect } from 'react'
 // } from '@/components/ui/drawer'
 // import { Button } from '@/components/ui/button'
 
-export const Route = createFileRoute('/_rootLayout')({
-  component: RouteComponent,
+export const Route = createFileRoute('/_appLayout')({
+  component: AppLayout,
 })
 
-function RouteComponent() {
+function AppLayout() {
   const [darkMode, setDarkMode] = useState<boolean>(false)
   //   const [aiInput, setAiInput] = useState<string>('')
   //   const [isRecording, setIsRecording] = useState<boolean>(false)
@@ -63,8 +63,11 @@ function RouteComponent() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex justify-center py-0 sm:py-8 transition-colors duration-300">
-      <div className="w-full max-w-[420px] bg-background sm:rounded-[32px] neo-border-thick overflow-hidden flex flex-col min-h-screen sm:min-h-[850px] shadow-2xl relative">
-        <header className="px-5 py-4 bg-primary text-primary-foreground border-b-4 border-border flex items-center justify-between">
+      <div className="w-full max-w-105 bg-background sm:rounded-[32px] neo-border-thick overflow-hidden flex flex-col min-h-screen sm:min-h-[850px] shadow-2xl relative">
+        <Link
+          to="/"
+          className="px-5 py-4 bg-primary text-primary-foreground border-b-4 border-border flex items-center justify-between"
+        >
           <div className="flex items-center gap-2">
             <div className="bg-secondary size-9 rounded-full neo-border-thin neo-shadow-sm rotate-[-4deg] flex items-center justify-center">
               <span className="text-lg font-black text-foreground">J!</span>
@@ -90,7 +93,7 @@ function RouteComponent() {
               S
             </div> */}
           </div>
-        </header>
+        </Link>
         <Outlet />
         {/*<div className="absolute bottom-4 left-0 right-0 px-6 flex justify-center z-40">
           <Drawer>

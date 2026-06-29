@@ -22,11 +22,11 @@ type Workspace = {
   description?: string
 }
 
-export const Route = createFileRoute('/_rootLayout/')({
-  component: WorkspacesPage,
+export const Route = createFileRoute('/_appLayout/app')({
+  component: AppPage,
 })
 
-function WorkspacesPage() {
+function AppPage() {
   const [workspaces, setWorkspaces] = useState<Array<Workspace>>([
     {
       id: '1',
@@ -137,7 +137,7 @@ function WorkspacesPage() {
           .map((ws) => (
             <Link
               key={ws.id}
-              to={`/workspace`}
+              to={`/app/workspace`}
               className="neo-card p-4 border-4 border-border bg-card"
             >
               <div className="flex items-start justify-between">
