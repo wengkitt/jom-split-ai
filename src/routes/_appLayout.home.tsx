@@ -22,7 +22,7 @@ type Workspace = {
   description?: string
 }
 
-export const Route = createFileRoute('/_appLayout/app')({
+export const Route = createFileRoute('/_appLayout/home')({
   component: AppPage,
 })
 
@@ -137,7 +137,7 @@ function AppPage() {
           .map((ws) => (
             <Link
               key={ws.id}
-              to={`/app/workspace`}
+              to={`/workspace`}
               className="neo-card p-4 border-4 border-border bg-card"
             >
               <div className="flex items-start justify-between">

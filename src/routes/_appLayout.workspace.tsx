@@ -31,7 +31,7 @@ import {
   calculateBalancesAndTransfers,
 } from '../lib/utils'
 
-export const Route = createFileRoute('/_appLayout/app/workspace')({
+export const Route = createFileRoute('/_appLayout/workspace')({
   component: WorkSpacePage,
 })
 
@@ -219,7 +219,7 @@ function WorkSpacePage() {
         <div className="px-5 py-4 border-b-4 border-border bg-card">
           <div className="flex flex-row items-center gap-4">
             <Link
-              to="/app"
+              to="/home"
               className="neo-btn bg-background text-foreground border-2 border-border px-3 py-2 rounded-xl inline-flex items-center gap-2 font-bold hover:bg-muted"
             >
               <ChevronLeft className="size-4" />

@@ -72,7 +72,7 @@ function LandingPage() {
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center md:justify-start">
-              <Link to="/app" className="w-full sm:w-auto">
+              <Link to="/home" className="w-full sm:w-auto">
                 <Button className="neo-btn bg-primary text-primary-foreground font-bold w-full sm:w-auto">
                   Get Started
                 </Button>
